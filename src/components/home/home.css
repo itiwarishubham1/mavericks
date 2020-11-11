@@ -1,0 +1,31 @@
+.fill{
+    position: relative;
+    /* left:40%; */
+    height: 6px;
+    background-color:royalblue;
+    border-radius: 20px;
+    /* width: 0px; */
+    /* bottom: 7px; */
+    /* z-index: 1; */
+}
+#progress-div {
+    width:162px;
+    background-color: rgb(243, 232, 232);
+}
+.progress-bar {
+    position: relative;
+    width: 400px;
+    height: 5px;
+    left: 40%;
+    background-color:lightgray;
+}
+.handle{
+    position: relative;
+    width: 8px;
+    height: 8px;
+    background-color:royalblue;
+    border-radius: 50%;
+    margin-left: -5px;
+    bottom: 7px;
+    transform: scale(2);
+}
