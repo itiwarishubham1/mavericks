@@ -6,10 +6,24 @@ export default  {
             currentDuration:0.1,
             duration: 100,
             steps:0.5,
+            isPlaying: true,
         }
 
     },
     methods: {
+        togglePlay() {
+            let player = this.$refs['video-element'];
+            if (this.isPlaying) {
+                player.pause();
+            } else {
+                player.play();
+            }
+            this.isPlaying =!this.isPlaying;
+        },
+        updateDuration() {
+            let player = this.$refs['video-element'];
+            this.currentDuration = player.currentTime;
+        },
         getLength(str) {return str.length;}     
     },
     computed: {
