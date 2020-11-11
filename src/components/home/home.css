@@ -9,7 +9,7 @@
     background-color: rgb(243, 232, 232);
 }
 .slider{
-    background: linear-gradient(to right, black 400px);
+    background: linear-gradient(to right, black 0px, black 400px);
     border: solid 1px #82CFD0;
     border-radius: 8px;
     height: 7px;
