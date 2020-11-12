@@ -56,3 +56,5 @@ var Event = function () {
         }
     };
 }; 
+
+export { Event };

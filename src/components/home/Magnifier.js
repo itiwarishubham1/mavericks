@@ -491,7 +491,7 @@ var Magnifier = function (evt, options) {
             onthumbmove: onthumbmove
         };
 
-        evt.attach('mouseover', thumb, function (e) {
+        evt.attach('mouseover', thumb, function (e, src) {
             if (curData.status !== 0) {
                 onThumbLeave();
             }
@@ -499,7 +499,7 @@ var Magnifier = function (evt, options) {
             curIdx = src.id;
             curThumb = src;
 
-            onThumbEnter();
+            onThumbEnter(src);
 
             setThumbData(curThumb, curData);
 
@@ -522,7 +522,7 @@ var Magnifier = function (evt, options) {
             }
         }, false);
 
-        evt.attach('mousemove', thumb, function () {
+        evt.attach('mousemove', thumb, function (e, src) {
             isOverThumb = 1;
         });
 
@@ -566,4 +566,4 @@ var Magnifier = function (evt, options) {
         }
     });
 };
-export default Magnifier;
+export { Magnifier };

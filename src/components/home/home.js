@@ -1,4 +1,7 @@
-const Magnifier = require("./Magnifier");
+import {Event} from './Event.js';
+import {Magnifier} from  './Magnifier.js';
+
+// const Magnifier = require("./Magnifier");
 
 export default  {
     name: 'HomeComponent',
@@ -85,7 +88,10 @@ export default  {
                 img.src = canvas.toDataURL(); 
                 //this.magnify("myimage", 2);
                 //let m = Magnifier();
-                Magnifier.attach({
+                alert(typeof Event);
+                alert(typeof (new Magnifier(new Event())).attach);
+                const custMagnifier = new Magnifier(new Event());
+                custMagnifier.attach({
                     thumb: '#thumb',
                     large: 'http://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Starry_Night_Over_the_Rhone.jpg/400px-Starry_Night_Over_the_Rhone.jpg',
                     largeWrapper: 'preview'
