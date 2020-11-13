@@ -10,5 +10,5 @@ cd dist
 git init
 git add -A
 git commit -m 'deploy'
-git push -f git@github.com:itiwarishubham1/mavericks.git master:mavericks
+git push -f git@github.com:itiwarishubham1/mavericks.git master:master
 cd -
