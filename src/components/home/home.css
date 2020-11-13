@@ -18,5 +18,28 @@
     /* transition: background 450ms ease-in; */
     -webkit-appearance: none;   
 }
+.fa {
+    color: crimson;
+    width: 100px;
+    height: 100px;
+}
+.video-wrapper {
+    display: block;
+    width: 500px;
+    height: 500px;
+}
 
- 
+.playpause {
+    background-image:url(http://png-4.findicons.com/files/icons/2315/default_icon/256/media_play_pause_resume.png);
+    background-repeat:no-repeat;
+    width:50px;
+    height:50px;
+    position:absolute;
+    left:0%;
+    right:0%;
+    top:0%;
+    bottom:0%;
+    margin:auto;
+    background-size:contain;
+    background-position: center;
+}

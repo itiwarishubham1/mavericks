@@ -10,14 +10,27 @@ export default {
             imgSrc: '',
             msg: 'Hello Welcome to my app',
             currentDuration: 0.1,
-            duration: 100,
-            steps: 0.5,
+            duration: 10,
+            steps: 1,
             isPlaying: false,
+            preOffset: 0,
         }
 
     },
     methods: {
+        update(e) {
+            // console.log("++++++++++"+e.offsetX);
+            let player = this.$refs['video-element'];
+            player.pause();
+            
+            player.currentTime = e.offsetX * player.duration /600;
+        },
+        againPlay() {
+            let player = this.$refs['video-element'];
+            player.play();
+        },
         togglePlay() {
+            console.log("----------------"+this.isPlaying);
             let player = this.$refs['video-element'];
             if (this.isPlaying) {
                 player.pause();
@@ -45,10 +58,10 @@ export default {
             }
             this.isPlaying = !this.isPlaying;
         },
-        updateDuration() {
-            let player = this.$refs['video-element'];
-            this.currentDuration = player.currentTime;
-        },
+        // updateDuration() {
+        //     let player = this.$refs['video-element'];
+        //     this.currentDuration = player.currentTime;
+        // },
         getLength(str) { return str.length; }
     },
     computed: {
@@ -61,7 +74,7 @@ export default {
             this.duration = player.duration;
             player.currentTime = val
             this.currentDuration = player.currentTime;
-            slider.style.background = 'linear-gradient(to right, #82CFD0 0px, #82CFD0 ' + val * (400 / this.duration) + 'px, black ' + val * (400 / this.duration) + 'px, black 400px)'
+            slider.style.background = 'linear-gradient(to right, #82CFD0 0px, #82CFD0 ' + val * (600 / this.duration) + 'px, black ' + val * (600 / this.duration) + 'px, black 600px)'
         }
     },
 }
