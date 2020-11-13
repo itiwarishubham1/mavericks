@@ -13,6 +13,7 @@
         controls
         @mousemove="update($event)"
         @mouseleave="againPlay()"
+        @timeupdate="updateDuration()"
         @click="togglePlay($event)"
       >
         <source src="./video/test2.mp4" type="video/mp4" />
