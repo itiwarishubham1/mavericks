@@ -499,7 +499,7 @@ var Magnifier = function (evt, options) {
             curIdx = src.id;
             curThumb = src;
 
-            onThumbEnter(src);
+            onThumbEnter();
 
             setThumbData(curThumb, curData);
 
@@ -522,7 +522,7 @@ var Magnifier = function (evt, options) {
             }
         }, false);
 
-        evt.attach('mousemove', thumb, function (e, src) {
+        evt.attach('mousemove', thumb, function () {
             isOverThumb = 1;
         });
 

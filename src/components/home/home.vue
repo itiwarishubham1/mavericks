@@ -4,14 +4,15 @@
 
 <template>
   <div>
-    <div id="player">
+    <div v-show="isPlaying" id="player">
       <video
         id="videoPlayer"
         ref="video-element"
-        width="500px"
-        height="500px"
+        width="600px"
+        height="600px"
         @click="togglePlay($event)"
         @timeupdate="updateDuration($event)"
+        preload
       >
         <source src="./video/test.mp4" type="video/mp4" />
       </video>
@@ -29,11 +30,10 @@
         </div>
       </div>
     </div>
-    <div>
-    <div class="magnifier-thumb-wrapper" href="http://en.wikipedia.org/wiki/File:Starry_Night_Over_the_Rhone.jpg">
-        <img id="thumb" src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Starry_Night_Over_the_Rhone.jpg/200px-Starry_Night_Over_the_Rhone.jpg">
+    <div id="image" v-show="!isPlaying">
+      <div class="magnifier-thumb-wrapper">
+        <img ref="image-element" id="thumb" src="" alt="" width="700px" height="300px" @click="togglePlay($event)">
+      </div>
     </div>
-    <div class="magnifier-preview" id="preview" style="width: 200px; height: 133px">Starry Night Over The Rhone<br>by Vincent van Gogh</div>
-</div>
   </div>
 </template>
