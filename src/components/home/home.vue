@@ -30,13 +30,30 @@
             v-model="currentDuration"
           />
         </div>
+      </div>
       </div> -->
     </div>
     <div id="image" v-show="!isPlaying">
       <span @click="togglePlay($event)">&times;</span>
       <div class="magnifier-thumb-wrapper">
-        <img ref="image-element" id="thumb" src="" alt="" width="700px" height="300px">
+        <img
+          ref="image-element"
+          id="thumb"
+          src=""
+          alt=""
+          width="700px"
+          height="300px"
+          @click="togglePlay($event)"
+        />
       </div>
+    </div>
+    <div v-if="!image">
+      <h2>Select an Video</h2>
+      <input type="file" @change="onFileChange" />
+    </div>
+    <div v-else>
+      <img :src="image" />
+      <button @click="removeImage">Remove image</button>
     </div>
   </div>
 </template>

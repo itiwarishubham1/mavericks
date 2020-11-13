@@ -7,6 +7,7 @@ export default {
     name: 'HomeComponent',
     data() {
         return {
+            image: '',
             imgSrc: '',
             msg: 'Hello Welcome to my app',
             currentDuration: 0.1,
@@ -64,7 +65,25 @@ export default {
                 player.play();
             }
         },
-        getLength(str) { return str.length; }
+        onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length)
+              return;
+            this.createImage(files[0]);
+          },
+          createImage(file) {
+            var image = new Image();
+            var reader = new FileReader();
+            var vm = this;
+      
+            reader.onload = (e) => {
+              vm.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
+          },
+          removeImage: function (e) {
+            this.image = '';
+          }
     },
     computed: {
 
@@ -76,6 +95,7 @@ export default {
             this.duration = player.duration;
             player.currentTime = val
             this.currentDuration = player.currentTime;
+            slider.style.background = 'linear-gradient(to right, #82CFD0 0px, #82CFD0 ' + val * (400 / this.duration) + 'px, black ' + val * (400 / this.duration) + 'px, black 400px)'
             slider.style.background = 'linear-gradient(to right, #82CFD0 0px, #82CFD0 ' + val * (600 / this.duration) + 'px, black ' + val * (600 / this.duration) + 'px, black 600px)'
         }
     },
