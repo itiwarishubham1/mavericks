@@ -11,4 +11,5 @@ git init
 git add -A
 git commit -m 'deploy'
 git push -f git@github.com:itiwarishubham1/mavericks.git master:master
+
 cd -
