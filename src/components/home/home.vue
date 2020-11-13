@@ -35,7 +35,6 @@
     <div id="image" v-show="!isPlaying">
       <span @click="togglePlay($event)">&times;</span>
       <div class="magnifier-thumb-wrapper">
-        <img ref="image-element" id="thumb" src="" alt="" width="700px" height="300px">
         <img
           ref="image-element"
           id="thumb"

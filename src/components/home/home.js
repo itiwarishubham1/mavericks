@@ -11,8 +11,6 @@ export default {
             imgSrc: '',
             msg: 'Hello Welcome to my app',
             currentDuration: 0.1,
-            duration: 100,
-            steps: 0.5,
             duration: 10,
             steps: 1,
             isPlaying: false,
@@ -69,11 +67,6 @@ export default {
         //     let player = this.$refs['video-element'];
         //     this.currentDuration = player.currentTime;
         // },
-        getLength(str) { return str.length; }
-        getLength(str) { return str.length; }
-        getLength(str) { 
-            return str.length; 
-        },
         onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length)
