@@ -136,33 +136,34 @@ var Magnifier = function (evt, options) {
         updateLensOnLoad = function (idx, thumb, large, largeWrapper) {
             var lens = $('#' + idx + '-lens'),
                 textWrapper = null;
-
-            if (data[idx].status === 1) {
-                textWrapper = document.createElement('div');
-                textWrapper.className = 'magnifier-loader-text';
-                lens.className = 'magnifier-loader hidden';
-
-                textWrapper.appendChild(document.createTextNode('Loading...'));
-                lens.appendChild(textWrapper);
-            } else if (data[idx].status === 2) {
-                lens.className = 'magnifier-lens hidden';
-                lens.removeChild(lens.childNodes[0]);
-                lens.style.background = 'url(' + thumb.src + ') no-repeat 0 0 scroll';
-
-                large.id = idx + '-large';
-                large.style.width = data[idx].largeW + 'px';
-                large.style.height = data[idx].largeH + 'px';
-                large.className = 'magnifier-large hidden';
-
-                if (data[idx].mode === 'inside') {
-                    lens.appendChild(large);
-                } else {
-                    largeWrapper.appendChild(large);
+            if (lens !== null) {
+                if (data[idx].status === 1) {
+                    textWrapper = document.createElement('div');
+                    textWrapper.className = 'magnifier-loader-text';
+                    lens.className = 'magnifier-loader hidden';
+    
+                    textWrapper.appendChild(document.createTextNode('Loading...'));
+                    lens.appendChild(textWrapper);
+                } else if (data[idx].status === 2) {
+                    lens.className = 'magnifier-lens hidden';
+                    lens.removeChild(lens.childNodes[0]);
+                    lens.style.background = 'url(' + thumb.src + ') no-repeat 0 0 scroll';
+    
+                    large.id = idx + '-large'; // 
+                    large.style.width = data[idx].largeW + 'px';
+                    large.style.height = data[idx].largeH + 'px';
+                    large.className = 'magnifier-large hidden';
+                    if (data[idx].mode === 'inside') {
+                        lens.appendChild(large);
+                    } else {
+                        largeWrapper.appendChild(large);
+                    }
                 }
+    
+                lens.style.width = data[idx].lensW + 'px';
+                lens.style.height = data[idx].lensH + 'px';
             }
-
-            lens.style.width = data[idx].lensW + 'px';
-            lens.style.height = data[idx].lensH + 'px';
+            
         },
         getMousePos = function () {
             var xPos = pos.x - curData.x,
@@ -288,7 +289,10 @@ var Magnifier = function (evt, options) {
                 }
 
                 curLarge = $('#' + curIdx + '-large');
-                curLarge.className = 'magnifier-large';
+                if (curLarge != null) {
+                    curLarge.className = 'magnifier-large';
+                }
+                
             } else if (curData.status === 1) {
                 curLens.className = 'magnifier-loader';
             }
@@ -329,9 +333,13 @@ var Magnifier = function (evt, options) {
                     curLens.className = 'magnifier-loader';
                 } else if (curData.status === 2) {
                     curLens.className = 'magnifier-lens';
-                    curLarge.className = 'magnifier-large';
-                    curLarge.style.left = '-' + curData.largeL + 'px';
+                    if (curLarge != null) {
+                        curLarge.className =  'magnifier-large';
+                    }
+                    if (curLarge != null) {
+                        curLarge.style.left = '-' + curData.largeL + 'px';
                     curLarge.style.top = '-' + curData.largeT + 'px';
+                    }
                 }
 
                 curLens.style.left = pos.l + 'px';
