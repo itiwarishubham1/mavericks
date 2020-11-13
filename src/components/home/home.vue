@@ -10,13 +10,14 @@
         ref="video-element"
         width="600px"
         height="600px"
+        controls
+        @mousemove="update($event)"
+        @mouseleave="againPlay()"
         @click="togglePlay($event)"
-        @timeupdate="updateDuration($event)"
-        preload
       >
-        <source src="./video/test.mp4" type="video/mp4" />
+        <source src="./video/test2.mp4" type="video/mp4" />
       </video>
-      <div id="controls">
+      <!-- <div id="controls">
         <div>
           <input
             ref="slider"
@@ -29,9 +30,12 @@
           />
         </div>
       </div>
+      </div> -->
     </div>
     <div id="image" v-show="!isPlaying">
+      <span @click="togglePlay($event)">&times;</span>
       <div class="magnifier-thumb-wrapper">
+        <img ref="image-element" id="thumb" src="" alt="" width="700px" height="300px">
         <img
           ref="image-element"
           id="thumb"
