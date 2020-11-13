@@ -30,12 +30,6 @@
     height: 500px;
 }
 
-img {
-    width: 30%;
-    margin: auto;
-    display: block;
-    margin-bottom: 10px;
-  }
 .playpause {
     background-image:url(http://png-4.findicons.com/files/icons/2315/default_icon/256/media_play_pause_resume.png);
     background-repeat:no-repeat;
@@ -49,4 +43,8 @@ img {
     margin:auto;
     background-size:contain;
     background-position: center;
+}
+
+.cross:hover{
+    cursor: pointer;
 }

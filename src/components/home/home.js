@@ -55,6 +55,12 @@ export default {
                 });
             } else {
                 player.play();
+                var lens = document.getElementById('thumb-lens');
+                if (lens !== null){
+                    for (let i=0; i < lens.childNodes.length; i++) {
+                        lens.removeChild(lens.childNodes[i]);
+                    }
+                }
             }
             this.isPlaying = !this.isPlaying;
         },
@@ -65,25 +71,6 @@ export default {
                 player.play();
             }
         },
-        onFileChange(e) {
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length)
-              return;
-            this.createImage(files[0]);
-          },
-          createImage(file) {
-            var image = new Image();
-            var reader = new FileReader();
-            var vm = this;
-      
-            reader.onload = (e) => {
-              vm.image = e.target.result;
-            };
-            reader.readAsDataURL(file);
-          },
-          removeImage: function (e) {
-            this.image = '';
-          }
     },
     computed: {
 

@@ -4,13 +4,14 @@
 
 <template>
   <div>
+    <h1 v-show="isPlaying"><b><u>3-D KAR Conceptor</u></b></h1>
     <div v-show="isPlaying" id="player">
       <video
         id="videoPlayer"
         ref="video-element"
-        width="600px"
-        height="600px"
-        controls
+        width="550px"
+        height="400px"
+        preload="auto"
         @mousemove="update($event)"
         @mouseleave="againPlay()"
         @timeupdate="updateDuration()"
@@ -34,12 +35,12 @@
       </div> -->
     </div>
     <div id="image" v-show="!isPlaying">
-      <span @click="togglePlay($event)">&times;</span>
+      <span @click="togglePlay($event)" class="cross">&times;</span>
       <div class="magnifier-thumb-wrapper">
         <img
           ref="image-element"
           id="thumb"
-          src=""
+          src="./Welcom.jpg"
           alt=""
           width="700px"
           height="300px"
@@ -47,13 +48,5 @@
         />
       </div>
     </div>
-    <div v-if="!image">
-      <h2>Select an Video</h2>
-      <input type="file" @change="onFileChange" />
     </div>
-    <div v-else>
-      <img :src="image" />
-      <button @click="removeImage">Remove image</button>
-    </div>
-  </div>
 </template>
