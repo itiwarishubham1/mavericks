@@ -23,7 +23,9 @@ export default {
             // console.log("++++++++++"+e.offsetX);
             let player = this.$refs['video-element'];
             player.pause();
-            
+            if(this.preOffset===0) {
+                this.preOffset = e.offsetX;
+            }
             player.currentTime = e.offsetX * player.duration /600;
         },
         againPlay() {
@@ -31,7 +33,6 @@ export default {
             player.play();
         },
         togglePlay() {
-            console.log("----------------"+this.isPlaying);
             let player = this.$refs['video-element'];
             if (this.isPlaying) {
                 player.pause();
@@ -45,8 +46,6 @@ export default {
                 var img = this.$refs['image-element'];
                 this.imgSrc = canvas.toDataURL("image/png", 1);
                 img.src = this.imgSrc;
-                //this.magnify("myimage", 2);
-                //let m = Magnifier();
                 const custMagnifier = new Magnifier(new Event());
                 custMagnifier.attach({
                     thumb: '#thumb',
@@ -61,12 +60,11 @@ export default {
         },
         updateDuration() {
             let player = this.$refs['video-element'];
-            this.currentDuration = player.currentTime;
+            if(player.currentTime === player.duration) {
+                player.currentTime = 0;
+                player.play();
+            }
         },
-        // updateDuration() {
-        //     let player = this.$refs['video-element'];
-        //     this.currentDuration = player.currentTime;
-        // },
         onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length)
