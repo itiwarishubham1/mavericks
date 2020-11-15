@@ -1,5 +1,8 @@
 # mavericks
-
+## DEMO
+```
+https://itiwarishubham1.github.io/mavericks/
+```
 ## Project setup
 ```
 yarn install
